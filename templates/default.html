@@ -4,20 +4,23 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <title>SimpleBlog - $title$</title>
+        <title>Blog - $title$</title>
         <link rel="stylesheet" type="text/css" href="/css/default.css" />
         <link rel="alternate"
               type="application/rss+xml"
-              title="My Blog"
+              title="Blog"
               href="/rss.xml" />
     </head>
     <body>
-        <h1>SimpleBlog - $title$</h1>
+        <h1>Blog - $title$</h1>
         <div id="navigation">
             <a href="/">Home</a>
             <a href="/posts.html">All posts</a>
+	    <a href="/tags.html">Tags</a>
         </div>
 
         $body$
     </body>
+    <div id="footer">
+    <p>This site generated using <a href="http://jaspervdj.be/hakyll">Hakyll</a>.</p></div>
 </html>

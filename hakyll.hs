@@ -44,15 +44,19 @@ main = hakyll $ do
     match "index.html" $ route idRoute
     create "index.html" $ constA mempty
         >>> arr (setField "title" "Home")
-        >>> requireA "tags" (setFieldA "tagcloud" (renderTagCloud'))
         >>> requireAllA "posts/*" (id *** arr (take 3 . reverse . chronological) >>> addPostList)
         >>> applyTemplateCompiler "templates/index.html"
         >>> applyTemplateCompiler "templates/default.html"
         >>> relativizeUrlsCompiler
 
     -- Tags
-    create "tags" $
-        requireAll "posts/*" (\_ ps -> readTags ps :: Tags String)
+    match "tags.html" $ route idRoute
+    create "tags.html" $ constA mempty
+	>>> arr (setField "title" "Tags")
+	>>> requireA "tags" (setFieldA "tagcloud" (renderTagCloud'))
+	>>> applyTemplateCompiler "templates/tags.html"
+	>>> applyTemplateCompiler "templates/default.html"
+        >>> relativizeUrlsCompiler	
 
     -- Add a tag list compiler for every tag
     match "tags/*" $ route $ setExtension ".html"
