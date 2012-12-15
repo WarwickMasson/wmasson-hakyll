@@ -12,15 +12,16 @@
               href="/rss.xml" />
     </head>
     <body>
-        <h1>Blog - $title$</h1>
+        <div id="blogtitle"><h1>Blog</h1></div>
         <div id="navigation">
-            <a href="/">Home</a>
-            <a href="/posts.html">All posts</a>
-	    <a href="/tags.html">Tags</a>
+            <p><a href="/">Home</a></p>
+            <p><a href="/posts.html">Posts</a></p>
+	    <p><a href="/tags.html">Tags</a></p>
+	    <p><a href="/rss.xml">RSS</a></p>
         </div>
-
-        $body$
+        <div id="content">$body$</div>
+        <div id="footer">
+            <p>This site generated using <a href="http://jaspervdj.be/hakyll">Hakyll</a>.</p>
+        </div>
     </body>
-    <div id="footer">
-    <p>This site generated using <a href="http://jaspervdj.be/hakyll">Hakyll</a>.</p></div>
 </html>

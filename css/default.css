@@ -1,13 +1,20 @@
 body {
-    width: 600px;
-    margin: 0px auto 0px auto;
     background-image:url("/images/background.png");
-    font: 15px "Helvetica";
+    font: 10pt "Helvetica";
+    font-family: arial, helvetica, sans-serif;
+}
+div#blogtitle {
+    margin: 0 12em
+}
+div#content {
+    width: 600px;
+    margin: 0 12em;
 }
 
 div#navigation {
-    text-align: left;
-    border-top: 4px solid black;
+    float: left;
+    width: 10em;
+    text-align: right;
 }
 
 div#navigation a {
@@ -16,4 +23,13 @@ div#navigation a {
     background-color: black;
     padding: 3px 10px 3px 10px;
     margin: 0px 10px 0px 10px;
+}
+
+div#footer p{
+    clear: both;
+    color: black;
+    text-decoration: none;
+    font: 8pt "Helvetica";
+    margin: 0 12em;
+    padding: 3em;
 }

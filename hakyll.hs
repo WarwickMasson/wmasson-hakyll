@@ -34,7 +34,7 @@ main = hakyll $ do
     -- Render posts list
     match "posts.html" $ route idRoute
     create "posts.html" $ constA mempty
-        >>> arr (setField "title" "All posts")
+        >>> arr (setField "title" "Posts")
         >>> requireAllA "posts/*" addPostList
         >>> applyTemplateCompiler "templates/posts.html"
         >>> applyTemplateCompiler "templates/default.html"
@@ -50,6 +50,11 @@ main = hakyll $ do
         >>> relativizeUrlsCompiler
 
     -- Tags
+
+    create "tags" $
+        requireAll "posts/*" (\_ ps -> readTags ps :: Tags String)
+
+    -- Tags Page
     match "tags.html" $ route idRoute
     create "tags.html" $ constA mempty
 	>>> arr (setField "title" "Tags")
