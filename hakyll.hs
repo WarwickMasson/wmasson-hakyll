@@ -67,7 +67,14 @@ main = hakyll $ do
     metaCompile $ require_ "tags"
         >>> arr tagsMap
         >>> arr (map (\(t, p) -> (tagIdentifier t, makeTagList t p)))
-
+    
+    -- About
+    match "about.markdown" $ do
+        route $ setExtension "html"
+        compile $ pageCompiler
+            >>> applyTemplateCompiler "templates/default.html"
+            >>> relativizeUrlsCompiler
+ 
     -- Render RSS feed
     match "rss.xml" $ route idRoute
     create "rss.xml" $
