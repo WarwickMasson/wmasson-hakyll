@@ -3,8 +3,14 @@ body {
     font: 10pt "Helvetica";
     font-family: arial, helvetica, sans-serif;
 }
-div#blogtitle {
-    margin: 0 12em
+
+div#blogtitle span{
+    border-radius: 15px;
+    -moz-border-radius: 15px;
+    background-color: black;
+    color: white;
+    padding: 5px 5px 5px 5px;
+    margin: 0 12em;
 }
 div#content {
     width: 600px;
@@ -18,6 +24,8 @@ div#navigation {
 }
 
 div#navigation a {
+    border-radius: 15px;
+    -moz-border-radius: 15px;
     color: white;
     text-decoration: none;
     background-color: black;
@@ -29,7 +37,7 @@ div#footer p{
     clear: both;
     color: black;
     text-decoration: none;
-    font: 8pt "Helvetica";
+    font-size: 8pt;
     margin: 0 12em;
     padding: 3em;
 }
