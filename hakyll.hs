@@ -53,8 +53,7 @@ main = hakyll $ do
 
     create "tags" $
         requireAll "posts/*" (\_ ps -> readTags ps :: Tags String)
-
-    -- Tags Page
+    -- Render tags list
     match "tags.html" $ route idRoute
     create "tags.html" $ constA mempty
 	>>> arr (setField "title" "Tags")
@@ -79,7 +78,10 @@ main = hakyll $ do
     match "templates/*" $ compile templateCompiler
   where
     renderTagCloud' :: Compiler (Tags String) String
-    renderTagCloud' = renderTagCloud tagIdentifier 100 120
+    renderTagCloud' = renderTagCloud tagIdentifier 100 300
+
+    renderTagList' :: Compiler (Tags String) String
+    renderTagList' = renderTagList tagIdentifier
 
     tagIdentifier :: String -> Identifier (Page String)
     tagIdentifier = fromCapture "tags/*"
