@@ -74,7 +74,11 @@ main = hakyll $ do
         compile $ pageCompiler
             >>> applyTemplateCompiler "templates/default.html"
             >>> relativizeUrlsCompiler
- 
+    -- Favicon
+    match "favicon.ico" $ do
+	route   idRoute
+        compile copyFileCompiler
+
     -- Render RSS feed
     match "rss.xml" $ route idRoute
     create "rss.xml" $
