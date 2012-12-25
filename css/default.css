@@ -1,12 +1,8 @@
+a:link {color: black}
+a:visited {color: black}
+
 .rounded {
-    border-radius: 15px;
-    -moz-border-radius: 15px;
-    -webkit-border-radius: 15px;
-    -khtml-border-radius: 15px;
-    background-color: black;
-    color: white;
     text-decoration: none;
-    padding: 5px 5px 5px 5px;
 }
 
 body {
@@ -16,16 +12,16 @@ body {
 }
 
 div#blogtitle span{
-    margin: 0 12em;
+    margin: 0 20em;
 }
 div#content {
     width: 600px;
-    margin: 0 12em;
+    margin: 0 20em;
 }
 
 div#navigation {
     float: left;
-    width: 10em;
+    width: 15em;
     text-align: right;
 }
 
@@ -36,6 +32,6 @@ div#navigation a {
 div#footer p{
     clear: both;
     font-size: 8pt;
-    margin: 0 12em;
+    margin: 0 20em;
     padding: 3em;
 }
