@@ -2,8 +2,7 @@ a:link {color: black}
 a:visited {color: black}
 
 code {
-    background-color: black;
-    color: white;
+    background-color: #CCCCCC;
     display: block;
     padding: 5px 5px 5px 5px;
 }
