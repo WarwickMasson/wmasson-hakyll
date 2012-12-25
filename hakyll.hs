@@ -69,9 +69,10 @@ main = hakyll $ do
         >>> arr (map (\(t, p) -> (tagIdentifier t, makeTagList t p)))
     
     -- About
-    match "about.markdown" $ do
+    match "about.md" $ do
         route $ setExtension "html"
         compile $ pageCompiler
+	    >>> applyTemplateCompiler "templates/about.html"
             >>> applyTemplateCompiler "templates/default.html"
             >>> relativizeUrlsCompiler
     -- Favicon
