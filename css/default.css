@@ -1,6 +1,13 @@
 a:link {color: black}
 a:visited {color: black}
 
+code {
+    background-color: black;
+    color: white;
+    display: block;
+    padding: 5px 5px 5px 5px;
+}
+
 .rounded {
     text-decoration: none;
 }
