@@ -75,8 +75,8 @@ main = hakyll $ do
 	    >>> applyTemplateCompiler "templates/about.html"
             >>> applyTemplateCompiler "templates/default.html"
             >>> relativizeUrlsCompiler
-    -- Favicon
-    match "favicon.ico" $ do
+    -- Favicon,CNAME
+    match (list ["favicon.ico","CNAME"]) $ do
 	route   idRoute
         compile copyFileCompiler
 
