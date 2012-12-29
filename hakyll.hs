@@ -20,6 +20,14 @@ main = hakyll $ do
 	route   idRoute
         compile copyFileCompiler
 
+    -- 404
+    match "404.html" $ route idRoute
+    create "404.html" $ constA mempty
+	>>> arr (setField "title" "404")
+	>>> applyTemplateCompiler "templates/about.html"
+	>>> applyTemplateCompiler "templates/default.html"
+	>>> relativizeUrlsCompiler
+
     -- Render posts
     match "posts/*" $ do
         route   $ setExtension ".html"
@@ -50,7 +58,6 @@ main = hakyll $ do
         >>> relativizeUrlsCompiler
 
     -- Tags
-
     create "tags" $
         requireAll "posts/*" (\_ ps -> readTags ps :: Tags String)
     -- Render tags list
