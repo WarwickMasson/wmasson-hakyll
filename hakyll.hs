@@ -23,7 +23,7 @@ main = hakyll $ do
     -- 404
     match "404.html" $ route idRoute
     create "404.html" $ constA mempty
-	>>> arr (setField "title" "404")
+	>>> arr (setField "title" "404 - Page not found")
 	>>> applyTemplateCompiler "templates/about.html"
 	>>> applyTemplateCompiler "templates/default.html"
 	>>> relativizeUrlsCompiler
