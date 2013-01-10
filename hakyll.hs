@@ -129,8 +129,8 @@ makeTagList tag posts =
 feedConfiguration :: FeedConfiguration
 feedConfiguration = FeedConfiguration
     { feedTitle       = "wmasson RSS feed."
-    , feedDescription = "wmasson posts"
+    , feedDescription = "posts from wmasson.com."
     , feedAuthorName  = "Warwick Masson"
     , feedAuthorEmail = "warwick.masson@gmail.com"
-    , feedRoot        = ""
+    , feedRoot        = "http://wmasson.com"
     }
