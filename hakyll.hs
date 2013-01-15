@@ -22,7 +22,7 @@ main = hakyll $ do
 
 	-- Copy Javascript
 	match "js/*" $ do
-		route idRoute
+		route	idRoute
 		compile copyFileCompiler
 
     -- 404
@@ -85,11 +85,12 @@ main = hakyll $ do
         route $ setExtension "html"
         compile $ pageCompiler
 	    >>> applyTemplateCompiler "templates/about.html"
-            >>> applyTemplateCompiler "templates/default.html"
-            >>> relativizeUrlsCompiler
+        >>> applyTemplateCompiler "templates/default.html"
+        >>> relativizeUrlsCompiler
+
     -- Favicon,CNAME
     match (list ["favicon.ico","CNAME"]) $ do
-	route   idRoute
+		route   idRoute
         compile copyFileCompiler
 
     -- Render RSS feed
