@@ -17,8 +17,13 @@ main = hakyll $ do
 
     -- Copy Images
     match "images/*" $ do
-	route   idRoute
+		route   idRoute
         compile copyFileCompiler
+
+	-- Copy Javascript
+	match "js/*" $ do
+		route idRoute
+		compile copyFileCompiler
 
     -- 404
     match "404.html" $ route idRoute
