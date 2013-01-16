@@ -17,21 +17,21 @@ main = hakyll $ do
 
     -- Copy Images
     match "images/*" $ do
-		route   idRoute
+        route   idRoute
         compile copyFileCompiler
 
 	-- Copy Javascript
 	match "js/*" $ do
-		route	idRoute
-		compile copyFileCompiler
+        route   idRoute
+        compile copyFileCompiler
 
     -- 404
     match "404.html" $ route idRoute
     create "404.html" $ constA mempty
-	>>> arr (setField "title" "404 - Page not found")
-	>>> applyTemplateCompiler "templates/about.html"
-	>>> applyTemplateCompiler "templates/default.html"
-	>>> relativizeUrlsCompiler
+	     >>> arr (setField "title" "404 - Page not found")
+	     >>> applyTemplateCompiler "templates/about.html"
+	     >>> applyTemplateCompiler "templates/default.html"
+	     >>> relativizeUrlsCompiler
 
     -- Render posts
     match "posts/*" $ do
@@ -65,6 +65,7 @@ main = hakyll $ do
     -- Tags
     create "tags" $
         requireAll "posts/*" (\_ ps -> readTags ps :: Tags String)
+
     -- Render tags list
     match "tags.html" $ route idRoute
     create "tags.html" $ constA mempty
@@ -84,13 +85,13 @@ main = hakyll $ do
     match "about.md" $ do
         route $ setExtension "html"
         compile $ pageCompiler
-	    >>> applyTemplateCompiler "templates/about.html"
-        >>> applyTemplateCompiler "templates/default.html"
-        >>> relativizeUrlsCompiler
+	        >>> applyTemplateCompiler "templates/about.html"
+            >>> applyTemplateCompiler "templates/default.html"
+            >>> relativizeUrlsCompiler
 
     -- Favicon,CNAME
     match (list ["favicon.ico","CNAME"]) $ do
-		route   idRoute
+        route   idRoute
         compile copyFileCompiler
 
     -- Render RSS feed
