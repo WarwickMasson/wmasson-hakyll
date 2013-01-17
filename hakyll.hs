@@ -20,18 +20,18 @@ main = hakyll $ do
         route   idRoute
         compile copyFileCompiler
 
-	-- Copy Javascript
-	match "js/*" $ do
+    -- Copy Javascript
+    match "js/*" $ do
         route   idRoute
         compile copyFileCompiler
 
     -- 404
     match "404.html" $ route idRoute
     create "404.html" $ constA mempty
-	     >>> arr (setField "title" "404 - Page not found")
-	     >>> applyTemplateCompiler "templates/about.html"
-	     >>> applyTemplateCompiler "templates/default.html"
-	     >>> relativizeUrlsCompiler
+         >>> arr (setField "title" "404 - Page not found")
+         >>> applyTemplateCompiler "templates/about.html"
+         >>> applyTemplateCompiler "templates/default.html"
+         >>> relativizeUrlsCompiler
 
     -- Render posts
     match "posts/*" $ do
@@ -69,11 +69,11 @@ main = hakyll $ do
     -- Render tags list
     match "tags.html" $ route idRoute
     create "tags.html" $ constA mempty
-	>>> arr (setField "title" "Tags")
-	>>> requireA "tags" (setFieldA "tagcloud" (renderTagCloud'))
-	>>> applyTemplateCompiler "templates/tags.html"
-	>>> applyTemplateCompiler "templates/default.html"
-        >>> relativizeUrlsCompiler	
+        >>> arr (setField "title" "Tags")
+        >>> requireA "tags" (setFieldA "tagcloud" (renderTagCloud'))
+        >>> applyTemplateCompiler "templates/tags.html"
+        >>> applyTemplateCompiler "templates/default.html"
+        >>> relativizeUrlsCompiler    
 
     -- Add a tag list compiler for every tag
     match "tags/*" $ route $ setExtension ".html"
@@ -85,7 +85,7 @@ main = hakyll $ do
     match "about.md" $ do
         route $ setExtension "html"
         compile $ pageCompiler
-	        >>> applyTemplateCompiler "templates/about.html"
+            >>> applyTemplateCompiler "templates/about.html"
             >>> applyTemplateCompiler "templates/default.html"
             >>> relativizeUrlsCompiler
 
