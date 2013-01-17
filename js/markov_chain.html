@@ -1,0 +1,129 @@
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>D3 Test</title>
+		
+	</head>
+	<body>
+		<script type="text/javascript" src="../js/d3.v3.js"></script>
+		<script type="text/javascript">
+		
+			//Constants
+			var w = 500;
+			var h = 500;
+			var m = 1000;
+			var r = 200;
+			var p = 250;
+			//Create SVG element
+			colors = ["red","black","green","blue","purple","cyan","lawnGreen","sienna","gold","magenta"];
+			startDisplay(colors.length);
+			function startDisplay(n){
+				var svg = d3.select("body")
+						.append("svg")
+						.attr("width", w)
+						.attr("height", h);
+				var positions = getPositions(n);
+				for(var i=0;i<n;i++){
+					p = positions[i];
+					svg.append("circle")
+					.attr("cx",p.cx)
+					.attr("cy",p.cy)
+					.attr("r",5)
+					.style("fill",colors[i]);
+				}			
+				var transitions = newTransitions(n);
+				var initial = randomLine(n);
+				var ants = getAnts(initial,m,positions,svg);
+				startAnimation(ants,transitions,positions);
+			}
+            
+			
+			function startAnimation(ants,transitions,positions){
+				for(var j=0;j<ants.length;j++){
+					move(ants[j],transitions,positions);
+				}
+			}			
+			function move(ant,transitions,positions){
+                ant.style("fill",colors[ant.pos]);
+				ant.pos = choose(transitions[ant.pos]);
+				p = positions[ant.pos];
+				ant.transition()
+				.attr("cx",p.cx)
+				.attr("cy",p.cy)
+				.duration(1000+1000*Math.random())
+				.each("end",function(d){move(ant,transitions,positions)});
+			}		
+			
+			function getPositions(n){
+				var positions = [];
+				for(var i=0;i<n;i++){
+					cx = p+r*Math.cos(circlePart(i,n));
+					cy = p+r*Math.sin(circlePart(i,n));
+					positions[i] = {"cx":cx,"cy":cy};
+				}
+				return positions;
+			}	
+			
+			function randInt(n){
+				return Math.floor(random()*n);
+			}
+			
+			function getAnts(initial,m,positions,svg){
+				var ants = [];
+				for(var i=0;i<m;i++){
+					pos = choose(initial);
+					p = positions[pos];
+					ants[i] = svg.append("circle")
+					.attr("cx",p.cx)
+					.attr("cy",p.cy)
+					.attr("r",1)
+                    .style("fill",colors[pos]);
+					ants[i].pos = pos;
+				}
+				return ants
+			}
+			
+			function newTransitions(n){
+				var transitions = []
+				for(var i=0;i<n;i++){
+					transitions[i] = randomLine(n);
+				}
+				return transitions;
+			}
+			
+			function randomLine(n){
+				var sum = 0;
+				l = []
+				for(var i=0;i<n;i++){
+					l[i] = diverseRandom();
+					sum = sum + l[i];
+				}
+				for(var i=0;i<n;i++){
+					l[i] = l[i]/sum;
+				}
+				return l;
+			}
+			
+			function diverseRandom(){
+				return Math.exp(Math.exp(1+Math.random()));
+			}
+			
+			function choose(randomLine){
+				r = Math.random();
+				for(var i=0;i<randomLine.length;i++){
+					r = r-randomLine[i]
+					if (r <= 0){
+						return i;
+					}
+				}
+			}
+			
+			function circlePart(i,n){
+				return 2*Math.PI*i/n;
+			}
+			
+		</script>
+	</body>
+</html>
