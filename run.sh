@@ -1,2 +1,2 @@
 ./make.sh
-./hakyll preview
+./hakyll preview > /dev/null
