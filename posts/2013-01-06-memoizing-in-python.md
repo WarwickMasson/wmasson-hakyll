@@ -22,8 +22,8 @@ def memoize_f(x):
 ~~~~~
 
 If we want to call f, instead we call memoize_f and it will remember the values. This is inconvenient for two reasons. If we have another function, say g,
-that needs to be memoized we need another function memoize_g. Also, the seen list is globally accessable which is undesirable. Instead a class can be made to wrap the
-function and handle these things.
+that needs memoization we need another function memoize_g. Also, the seen list is globally accessible which is undesirable. Instead we use a wrapper class for the
+function to handle the memoization.
 
 ~~~~~{.python}
 class memoizer:
@@ -41,7 +41,7 @@ class memoizer:
 memoize_f = memoizer(f)
 ~~~~~
 
-This is a cleaner solution. When we want to get the value of f(x) we can call memoize_f.lookup(x). This is somewhat inelegent, ideally we should just have memoize_f
+This is a cleaner solution. When we want to get the value of f(x) we can call memoize_f.lookup(x). This is somewhat inelegant, ideally we should just have memoize_f
 be a function itself.
 
 ~~~~~{.python}	

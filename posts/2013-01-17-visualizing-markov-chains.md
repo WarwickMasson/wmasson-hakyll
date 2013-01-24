@@ -36,6 +36,6 @@ the ants so that they don't just set off at the same time.
 <iframe style="border: 0px;" scrolling="no" width="500px" height="500px"
 src = "../js/markov_chain.html"></iframe>
 
-Notice how certain paths are very well travelled and others only have intermittent ants. The number of ants of a path from nest A to nest B
+Notice how certain paths are well travelled and others only have intermittent ants. The number of ants of a path from nest A to nest B
 is not just dependent on probability of going from A to B but also how many ants are going to A in the first place. This allows us to see the general
 traffic flow in the chain. 
