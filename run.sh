@@ -1,2 +1,2 @@
 ./make.sh
-./hakyll preview > /dev/null
+./site preview 

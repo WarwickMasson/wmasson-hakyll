@@ -1,4 +1,4 @@
 cp -r _site/.git /tmp
-ghc --make hakyll.hs
-./hakyll rebuild > /dev/null
+ghc --make site.hs
+./site rebuild
 mv /tmp/.git/ _site/ 

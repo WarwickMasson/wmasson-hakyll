@@ -1,7 +1,7 @@
 _site
-hakyll.hi
-hakyll.o
+site.hi
+site.o
 _cache
-hakyll
+site
 *.swp
 unpublished
