@@ -1,6 +1,14 @@
 {-# LANGUAGE OverloadedStrings #-}
 import Control.Applicative ((<$>))
+import Data.List (intercalate,sortBy)
+import Text.Blaze.Html (toHtml,toValue, (!))
+import Text.Blaze.Html.Renderer.String (renderHtml)
+import qualified Text.Blaze.Html5 as BlazeHtml
+import qualified Text.Blaze.Html5.Attributes as BlazeAttr
 import Data.Monoid (mappend, mconcat)
+import Hakyll.Web.Tags (renderTags)
+import Control.Monad (forM)
+import Data.Maybe (fromMaybe)
 import Hakyll
 
 main :: IO ()
@@ -95,7 +103,7 @@ main = hakyll $ do
     create ["tags.html"] $ do
         route idRoute
         compile $ do
-            tagList <- renderTagList tags 
+            tagList <- renderTagElem tags 
             let tagsContext = constField "title" "Tags" `mappend`
                     constField "tags" tagList `mappend`
                     defaultContext
@@ -104,6 +112,7 @@ main = hakyll $ do
                 >>= loadAndApplyTemplate "templates/default.html" defaultContext
                 >>= relativizeUrls 
 
+    -- RSS
     create ["rss.xml"] $ do
         route idRoute
         compile $ do
@@ -130,6 +139,18 @@ postList tags pattern prep = do
     posts <- prep <$> loadAll pattern
     itemTemplate <- loadBody "templates/postitem.html"
     applyTemplateList itemTemplate (postContext tags) posts
+
+-----------------------------------------------------
+
+renderTagElem :: Tags -> Compiler String
+renderTagElem = renderTags makeLink (intercalate "\n")
+    where
+        makeLink tag url count _ _ = renderHtml $
+            BlazeHtml.li $ BlazeHtml.a ! BlazeAttr.href (toValue url) $ toHtml (tag ++ " - " ++ show count ++(postName count))
+
+postName :: Int -> String
+postName 1 = " post"
+postName _ = " posts"
 
 ------------------------------------------------------
 
