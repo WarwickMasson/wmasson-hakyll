@@ -156,11 +156,11 @@ postName _ = " posts"
 
 feedConfiguration :: FeedConfiguration
 feedConfiguration = FeedConfiguration
-    { feedTitle = "wmasson - Posts"
-    , feedDescription = "Posts from wmasson.com"
+    { feedTitle = "warwickmasson.com - Posts"
+    , feedDescription = "Posts from warwickmasson.com"
     , feedAuthorName = "Warwick Masson"
     , feedAuthorEmail = "warwick.masson@gmail.com"
-    , feedRoot = "http://wmasson.com"
+    , feedRoot = "http://warwickmasson.com"
     }
 
 ------------------------------------------------------
