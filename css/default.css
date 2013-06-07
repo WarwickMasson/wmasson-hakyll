@@ -14,20 +14,20 @@ code {
 body {
     background-image:url("/images/background.png");
     font-family: Consolas, monaco, monospace;
-    font-size: 10pt;
+    font-size: 11pt;
 }
 
 div#title span{
-    margin: 0 20em;
+    margin: 0 10em;
 }
 div#content {
-    width: 600px;
-    margin: 0 20em;
+    width: 800px;
+    margin: 0 15em;
 }
 
 div#navigation {
     float: left;
-    width: 15em;
+    width: 10em;
     text-align: right;
 }
 
