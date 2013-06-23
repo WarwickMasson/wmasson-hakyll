@@ -14,7 +14,7 @@ import Hakyll
 main :: IO ()
 main = hakyll $ do
     -- Static files
-    match ("images/*" .||. "js/*" .||. "favicon.ico" .||. "CNAME") $ do
+    match ("images/*" .||. "js/*" .||. "favicon.ico" .||. "CNAME" .||. "files/*") $ do
         route idRoute
         compile copyFileCompiler
 
