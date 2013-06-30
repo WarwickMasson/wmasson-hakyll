@@ -3,7 +3,7 @@
 mkdir gutenberg_temp
 cd gutenberg_temp
 filename=$(basename $1)
-wget -p -k -nd $filename
+wget -p -k -nd $1
 for file in *.gif
 do
     base="${file%.*}"
