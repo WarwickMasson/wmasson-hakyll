@@ -66,7 +66,7 @@ main = hakyll $ do
                     defaultContext
             
             makeItem ""
-                >>= loadAndApplyTemplate "templates/posts.html" indexContext
+                >>= loadAndApplyTemplate "templates/index.html" indexContext
                 >>= loadAndApplyTemplate "templates/default.html" indexContext
                 >>= relativizeUrls
     
