@@ -60,7 +60,7 @@ main = hakyll $ do
     create ["index.html"] $ do
         route idRoute
         compile $ do
-            list <- postList tags "posts/*" $ take 3 . recentFirst
+            list <- postListNum tags "posts/*" recentFirst 3
             let indexContext = constField "posts" list `mappend`
                     constField "title" "Home" `mappend`
                     defaultContext
@@ -116,8 +116,9 @@ main = hakyll $ do
     create ["rss.xml"] $ do
         route idRoute
         compile $ do
-            posts <- take 10 .recentFirst <$> loadAll "posts/*"
-            renderRss feedConfiguration feedContext posts
+            posts <- loadAll "posts/*"
+            sorted <- take 10 <$> recentFirst posts
+            renderRss feedConfiguration feedContext sorted
 
     match "templates/*" $ compile templateCompiler
 
@@ -134,11 +135,19 @@ postContext tags = mconcat
 
 ------------------------------------------------------
 
-postList :: Tags -> Pattern -> ([Item String] -> [Item String]) -> Compiler String
+postList :: Tags -> Pattern -> ([Item String] -> Compiler [Item String]) -> Compiler String
 postList tags pattern prep = do
-    posts <- prep <$> loadAll pattern
+    posts <- loadAll pattern
     itemTemplate <- loadBody "templates/postitem.html"
-    applyTemplateList itemTemplate (postContext tags) posts
+    processed <- prep posts
+    applyTemplateList itemTemplate (postContext tags) processed
+
+postListNum :: Tags -> Pattern -> ([Item String] -> Compiler [Item String]) -> Int -> Compiler String
+postListNum tags pattern prep num = do
+    posts <- take num <$> loadAll pattern
+    itemTemplate <- loadBody "templates/postitem.html"
+    processed <- prep posts
+    applyTemplateList itemTemplate (postContext tags) processed
 
 -----------------------------------------------------
 
