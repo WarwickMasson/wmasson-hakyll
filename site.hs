@@ -146,7 +146,7 @@ postListNum :: Tags -> Pattern -> ([Item String] -> Compiler [Item String]) -> I
 postListNum tags pattern prep num = do
     posts <- prep <$> loadAll pattern
     itemTemplate <- loadBody "templates/postitem.html"
-    taken <- take 3 <$> posts
+    taken <- take num <$> posts
     applyTemplateList itemTemplate (postContext tags) taken
 
 -----------------------------------------------------
