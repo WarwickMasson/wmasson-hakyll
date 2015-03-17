@@ -1,2 +1,2 @@
 ./make.sh
-./site preview 
+./site watch
