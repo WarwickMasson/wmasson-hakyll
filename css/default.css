@@ -12,7 +12,7 @@ pre.code {
 
 body {
     background-image:url("/images/background.png");
-    font-family: lucida, monospace;
+    font-family: lucida;
     font-size: 13pt;
 }
 
@@ -32,12 +32,12 @@ div#navigation {
     float: left;
     width: 10%;
     text-align: right;
+    margin-left: 3%;
 }
 
 div#navigation a {
     padding: 5px;
     border-radius: 10px;
-    margin: 0% 10% 0% 10%;
 }
 
 div#navigation a:visited{
