@@ -2,8 +2,6 @@
 title: About
 ---
 
-![](/images/photo.jpg)
-
 My name is Warwick Masson - I'm a data scientist and developer from South Africa.
 I'm interested in robotics, machine learning,
 functional programming languages and just about anything else that sparks my curiosity.
