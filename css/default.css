@@ -1,8 +1,7 @@
 a:link {color: black}
-a:visited {color: black}
+a:visited {color: purple}
 
 pre.code {
-    background-color: #CCCCCC;
     display: block;
     padding: 5px 5px 5px 5px;
 }
@@ -14,30 +13,40 @@ pre.code {
 body {
     background-image:url("/images/background.png");
     font-family: Consolas, monaco, monospace;
-    font-size: 11pt;
+    font-size: 13pt;
 }
 
-div#title span{
-    margin: 0 10em;
+div#header {
+    margin: 0 15%;
+    width: 60%;
 }
+
 div#content {
-    width: 800px;
-    margin: 0 15em;
+    width: 60%;
+    margin: 0 15%;
+    padding: 1%;
+    border-radius: 10px;
 }
 
 div#navigation {
     float: left;
-    width: 10em;
+    width: 10%;
     text-align: right;
 }
 
 div#navigation a {
-    margin: 0px 10px 0px 10px;
+    padding: 5px;
+    border-radius: 10px;
+    margin: 0% 10% 0% 10%;
+}
+
+div#navigation a:visited{
+    color: black;
 }
 
 div#footer p{
     clear: both;
     font-size: 8pt;
-    margin: 0 20em;
-    padding: 3em;
+    margin: 0 20%;
+    padding: 3px;
 }
