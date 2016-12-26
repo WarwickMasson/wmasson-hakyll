@@ -4,11 +4,12 @@ title: About
 
 ![](/images/photo.jpg)
 
-My name is Warwick Masson - I'm a student and programmer from South Africa.
+My name is Warwick Masson - I'm a data scientist and developer from South Africa.
 I'm interested in robotics, machine learning,
 functional programming languages and just about anything else that sparks my curiosity.
 
-I'm currently doing a computer science masters at the [University of Witwatersrand](http://www.wits.ac.za). 
+I'm currently a data scientist at the [Isazi Consulting](http://www.isaziconsulting.co.za).
+I completed an Msc in Computer Science at the [University of the Witwatersrand](http://www.wits.ac.za).
 
 You can contact me at warwick dot masson at gmail dot com. 
 
